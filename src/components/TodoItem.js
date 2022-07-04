@@ -1,16 +1,16 @@
 import React from 'react';
 
-//stylesheet
+// stylesheet
 import styles from './TodoItem.module.css';
 
 class TodoItem extends React.Component {
   render() {
-    //add a line-through for a completed task
+    // add a line-through for a completed task
     const completedStyle = {
       fontStyle: 'italic',
       color: '#595959',
       opacity: 0.4,
-      textDecoration: 'line-through'
+      textDecoration: 'line-through',
     };
 
     // destructuring

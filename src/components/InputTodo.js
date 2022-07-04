@@ -11,7 +11,7 @@ class InputTodo extends Component {
     e.preventDefault();
     if (this.state.title.trim()) {
       this.props.addTodoProps(this.state.title);
-      //clear the input field
+      // clear the input field
       this.setState({ title: '' });
     } else {
       alert('Please write item');
