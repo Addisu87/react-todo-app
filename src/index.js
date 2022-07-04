@@ -1,14 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 // component file
-import TodoContainer from './components/TodoContainer';
+import TodoContainer from './functionBased/components/TodoContainer';
 
 // stylesheet
-import './index.css';
+import './functionBased/index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <TodoContainer />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+const container = document.getElementById('root');
+const TodoWrapper = createRoot(container);
+TodoWrapper.render(<TodoContainer />);
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <TodoContainer />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
