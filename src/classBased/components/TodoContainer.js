@@ -6,7 +6,7 @@ import TodosList from './TodosList';
 
 class TodoContainer extends React.Component {
   state = {
-    todos: []
+    todos: [],
   };
 
   handleChange = (id) => {
@@ -16,18 +16,18 @@ class TodoContainer extends React.Component {
         if (todo.id === id) {
           return {
             ...todo,
-            completed: !todo.completed
+            completed: !todo.completed,
           };
         }
         return todo;
-      })
+      }),
     }));
   };
 
   // delete item
   delTodo = (id) => {
     this.setState({
-      todos: [...this.state.todos.filter((todo) => todo.id !== id)]
+      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
     });
   };
 
@@ -35,10 +35,10 @@ class TodoContainer extends React.Component {
     const newTodo = {
       id: 4,
       title,
-      completed: false
+      completed: false,
     };
     this.setState({
-      todos: [...this.state.todos, newTodo]
+      todos: [...this.state.todos, newTodo],
     });
   };
 
@@ -49,7 +49,7 @@ class TodoContainer extends React.Component {
           todo.title = updatedTitle;
         }
         return todo;
-      })
+      }),
     });
   };
 

@@ -5,12 +5,12 @@ import styles from './TodoItem.module.css';
 
 class TodoItem extends React.Component {
   state = {
-    editing: false
+    editing: false,
   };
 
   handleEditing = () => {
     this.setState({
-      editing: true
+      editing: true,
     });
   };
 
@@ -41,7 +41,7 @@ class TodoItem extends React.Component {
       fontStyle: 'italic',
       color: '#595959',
       opacity: 0.4,
-      textDecoration: 'line-through'
+      textDecoration: 'line-through',
     };
 
     // destructuring

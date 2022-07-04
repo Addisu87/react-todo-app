@@ -6,7 +6,7 @@ const InputTodo = (props) => {
   const onChange = (e) => {
     setInputText({
       ...inputText,
-      [e.target.value]: e.target.value
+      [e.target.value]: e.target.value,
     });
   };
 
