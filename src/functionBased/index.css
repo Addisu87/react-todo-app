@@ -31,7 +31,6 @@ body {
   margin-bottom: 20px;
   display: flex;
   border-radius: calc(0.5 * 100px);
-  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.38);
   justify-content: space-evenly;
 }
 
@@ -42,6 +41,7 @@ body {
   padding-right: 5px;
   padding-left: 10px;
   border-radius: calc(0.5 * 100px);
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.38);
 }
 
 .input-text::placeholder {
