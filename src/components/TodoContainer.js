@@ -10,19 +10,19 @@ class TodoContainer extends React.Component {
       {
         id: uuidv4(),
         title: 'Setup development environment',
-        completed: true,
+        completed: true
       },
       {
         id: uuidv4(),
         title: 'Develop website and add content',
-        completed: false,
+        completed: false
       },
       {
         id: uuidv4(),
         title: 'Deploy to live server',
-        completed: false,
-      },
-    ],
+        completed: false
+      }
+    ]
   };
 
   handleChange = (id) => {
@@ -32,20 +32,18 @@ class TodoContainer extends React.Component {
         if (todo.id === id) {
           return {
             ...todo,
-            completed: !todo.completed,
+            completed: !todo.completed
           };
         }
         return todo;
-      }),
+      })
     }));
   };
 
   // delete item
   delTodo = (id) => {
     this.setState({
-      todos: [
-        ...this.state.todos.filter((todo) => todo.id !== id),
-      ],
+      todos: [...this.state.todos.filter((todo) => todo.id !== id)]
     });
   };
 
@@ -53,10 +51,21 @@ class TodoContainer extends React.Component {
     const newTodo = {
       id: 4,
       title,
-      completed: false,
+      completed: false
     };
     this.setState({
-      todos: [...this.state.todos, newTodo],
+      todos: [...this.state.todos, newTodo]
+    });
+  };
+
+  setUpdate = (updatedTitle, id) => {
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.title = updatedTitle;
+        }
+        return todo;
+      })
     });
   };
 
@@ -70,6 +79,7 @@ class TodoContainer extends React.Component {
             todos={this.state.todos}
             handleChangeProps={this.handleChange}
             deleteTodoProps={this.delTodo}
+            setUpdate={this.setUpdate}
           />
         </div>
       </div>
