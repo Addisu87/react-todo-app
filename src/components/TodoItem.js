@@ -20,6 +20,11 @@ class TodoItem extends React.Component {
     }
   };
 
+  // cleaning up lifecycle method
+  componentWillUnmount() {
+    console.log('Cleaning up...');
+  }
+
   render() {
     // render methods
     const viewMode = {};
