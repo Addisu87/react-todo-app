@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 const InputTodo = (props) => {
   const [inputText, setInputText] = useState({
-    title: ''
+    title: '',
   });
 
   const onChange = (e) => {
     setInputText({
       ...inputText,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -17,7 +17,7 @@ const InputTodo = (props) => {
     if (inputText.title.trim()) {
       props.addTodoProps(inputText.title);
       setInputText({
-        title: ''
+        title: '',
       });
     } else {
       alert('Please write item');

@@ -19,7 +19,7 @@ const TodoItem = (props) => {
     fontStyle: 'italic',
     color: '#595959',
     opacity: 0.4,
-    textDecoration: 'line-through'
+    textDecoration: 'line-through',
   };
 
   // destructuring
