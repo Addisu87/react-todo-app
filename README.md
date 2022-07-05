@@ -8,7 +8,7 @@
 
 ## Live Demo (if available)
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](http://localhost:3000/)
 
 ## Getting Started
 
@@ -16,15 +16,15 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+-- Any code editor
+
 ### Setup
+
+-- git clone of (git@github.com:Addisu87/react-todo-app.git)
 
 ### Install
 
-### Usage
-
-### Run tests
-
-### Deployment
+-- Install npm
 
 ## Authors
 
