@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
 const InputTodo = (props) => {
-  const [inputText, setInputText] = useState({ title: '' });
+  const [inputText, setInputText] = useState({
+    title: ''
+  });
 
   const onChange = (e) => {
     setInputText({
       ...inputText,
-      [e.target.value]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -14,8 +16,9 @@ const InputTodo = (props) => {
     e.preventDefault();
     if (inputText.title.trim()) {
       props.addTodoProps(inputText.title);
-      // clear the input field
-      setInputText({ title: '' });
+      setInputText({
+        title: ''
+      });
     } else {
       alert('Please write item');
     }
@@ -26,7 +29,7 @@ const InputTodo = (props) => {
       <input
         type="text"
         className="input-text"
-        placeholder="Add Todo..."
+        placeholder="Add todo..."
         value={inputText.title}
         name="title"
         onChange={onChange}

@@ -9,17 +9,17 @@ const TodoContainer = () => {
 
   // update state
   const handleChange = (id) => {
-    setTodos((prevState) =>
+    setTodos((prevState) => {
       prevState.map((todo) => {
         if (todo.id === id) {
           return {
             ...todo,
-            completed: !todo.completed
+            completed: !todo.completed,
           };
         }
         return todo;
-      })
-    );
+      });
+    });
   };
 
   // delete item
@@ -32,7 +32,7 @@ const TodoContainer = () => {
     const newTodo = {
       id: uuidv4(),
       title,
-      completed: false
+      completed: false,
     };
     setTodos([...todos, newTodo]);
   };
@@ -45,22 +45,11 @@ const TodoContainer = () => {
           todo.title = updatedTitle;
         }
         return todo;
-      })
+      }),
     );
   };
 
   // side effects(lifecycle methods using function)
-  // useEffect(() => {
-  //   console.log('test run');
-
-  //   // getting stored items
-  //   const temp = localStorage.getItem('todos');
-  //   const loadedTodos = JSON.parse(temp);
-
-  //   if (loadedTodos) {
-  //     setTodos(loadedTodos);
-  //   }
-  // }, []);
 
   function getInitialTodos() {
     // getting stored items
