@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
-import PropTypes from 'prop-types';
 import styles from './TodoItem.module.css';
 
 const TodoItem = (props) => {
@@ -24,9 +23,6 @@ const TodoItem = (props) => {
     textDecoration: 'line-through',
   };
 
-  // destructuring
-  const { completed, id, title } = props.todo;
-
   // render methods
   const viewMode = {};
   const editMode = {};
@@ -37,6 +33,11 @@ const TodoItem = (props) => {
     editMode.display = 'none';
   }
 
+  // destructuring
+  const { completed, id, title } = props.todo;
+
+  const { handleChangeProps, deleteTodoProps, setUpdate } = props;
+
   return (
     <li className={styles.item}>
       <div onDoubleClick={handleEditing} style={viewMode}>
@@ -44,9 +45,9 @@ const TodoItem = (props) => {
           type="checkbox"
           className={styles.checkbox}
           checked={completed}
-          onChange={() => props.handleChangeProps(id)}
+          onChange={() => handleChangeProps(id)}
         />
-        <button onClick={() => props.deleteTodoProps(id)}>
+        <button type="button" onClick={() => deleteTodoProps(id)}>
           <FaTrash style={{ color: 'orangered', fontSize: '16px' }} />
         </button>
 
@@ -60,18 +61,12 @@ const TodoItem = (props) => {
         className={styles.textInput}
         value={title}
         onChange={(e) => {
-          props.setUpdate(e.target.value, id);
+          setUpdate(e.target.value, id);
         }}
         onKeyDown={handleUpdatedDone}
       />
     </li>
   );
-};
-
-TodoItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  completed: PropTypes.bool.isRequired,
 };
 
 export default TodoItem;
