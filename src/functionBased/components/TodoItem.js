@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import styles from './TodoItem.module.css';
 import { FaTrash } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+import styles from './TodoItem.module.css';
 
 const TodoItem = (props) => {
   const [editing, setEditing] = useState(false);
@@ -20,7 +21,7 @@ const TodoItem = (props) => {
     fontStyle: 'italic',
     color: '#595959',
     opacity: 0.4,
-    textDecoration: 'line-through'
+    textDecoration: 'line-through',
   };
 
   // destructuring
@@ -65,6 +66,12 @@ const TodoItem = (props) => {
       />
     </li>
   );
+};
+
+TodoItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  completed: PropTypes.bool.isRequired,
 };
 
 export default TodoItem;

@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import TodosList from './TodosList';
-import { Route, Switch } from 'react-router-dom';
 import About from '../pages/About';
 import NotMatch from '../pages/NotMatch';
+import Navbar from './Navbar';
 
 const TodoContainer = () => {
+  function getInitialTodos() {
+    // getting stored items
+    const temp = localStorage.getItem('todos');
+    const savedTodos = JSON.parse(temp);
+    return savedTodos || [];
+  }
+
   const [todos, setTodos] = useState(getInitialTodos());
 
   // update state
@@ -17,7 +25,7 @@ const TodoContainer = () => {
         if (todo.id === id) {
           return {
             ...todo,
-            completed: !todo.completed
+            completed: !todo.completed,
           };
         }
         return todo;
@@ -35,7 +43,7 @@ const TodoContainer = () => {
     const newTodo = {
       id: uuidv4(),
       title,
-      completed: false
+      completed: false,
     };
     setTodos([...todos, newTodo]);
   };
@@ -48,18 +56,11 @@ const TodoContainer = () => {
           todo.title = updatedTitle;
         }
         return todo;
-      })
+      }),
     );
   };
 
   // side effects(lifecycle methods using function)
-
-  function getInitialTodos() {
-    // getting stored items
-    const temp = localStorage.getItem('todos');
-    const savedTodos = JSON.parse(temp);
-    return savedTodos || [];
-  }
 
   useEffect(() => {
     // storing todos items
@@ -68,7 +69,9 @@ const TodoContainer = () => {
   }, [todos]);
 
   return (
-    <Switch>
+    <Routes>
+      <Navbar />
+
       <Route exact path="/">
         <div className="container">
           <div className="inner">
@@ -89,7 +92,7 @@ const TodoContainer = () => {
       <Route path="*">
         <NotMatch />
       </Route>
-    </Switch>
+    </Routes>
   );
 };
 
