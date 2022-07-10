@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: ["error", { "props": false }] */
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -61,7 +62,6 @@ const TodoContainer = () => {
   };
 
   // side effects(lifecycle methods using function)
-
   useEffect(() => {
     // storing todos items
     const temp = JSON.stringify(todos);
@@ -69,30 +69,31 @@ const TodoContainer = () => {
   }, [todos]);
 
   return (
-    <Routes>
+    <>
       <Navbar />
-
-      <Route exact path="/">
-        <div className="container">
-          <div className="inner">
-            <Header />
-            <InputTodo addTodoProps={addTodoItem} />
-            <TodosList
-              todos={todos}
-              handleChangeProps={handleChange}
-              deleteTodoProps={delTodo}
-              setUpdate={setUpdate}
-            />
+      <Routes>
+        <Route exact="true" path="/">
+          <div className="container">
+            <div className="inner">
+              <Header />
+              <InputTodo addTodoProps={addTodoItem} />
+              <TodosList
+                todos={todos}
+                handleChangeProps={handleChange}
+                deleteTodoProps={delTodo}
+                setUpdate={setUpdate}
+              />
+            </div>
           </div>
-        </div>
-      </Route>
-      <Route path="/about">
-        <About />
-      </Route>
-      <Route path="*">
-        <NotMatch />
-      </Route>
-    </Routes>
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="*">
+          <NotMatch />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
