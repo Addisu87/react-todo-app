@@ -70,6 +70,8 @@ body {
   margin-top: 2px;
 }
 
+/* active link */
+
 .active-link {
   color: orangered;
   text-decoration: underline;
@@ -96,7 +98,7 @@ body {
   list-style-type: none;
   position: fixed;
   top: 0;
-  background: darkcyan;
+  background: rgb(7, 194, 194);
   left: 0;
   bottom: 0;
   height: 100vh;

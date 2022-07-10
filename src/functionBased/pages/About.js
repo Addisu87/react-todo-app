@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, matchRoutes, Route } from 'react-router-dom';
+import { Link, matchPath, Route } from 'react-router-dom';
 import SinglePage from './SinglePage';
 
 const About = () => {
-  const { url, path } = matchRoutes();
+  const { url, path } = matchPath();
   return (
     <div className="about__content">
       <ul className="about__list">
