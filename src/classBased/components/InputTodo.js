@@ -29,7 +29,9 @@ class InputTodo extends Component {
           name="title"
           onChange={this.onChange}
         />
-        <button className="input-submit">Submit</button>
+        <button type="button" className="input-submit">
+          Submit
+        </button>
       </form>
     );
   }

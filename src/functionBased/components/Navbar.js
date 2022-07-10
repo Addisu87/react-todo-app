@@ -32,7 +32,7 @@ function Navbar() {
         )}
       </button>
 
-      <ul className={`menuNav ${navbarOpen ? ' showMenu' : ''}`}>
+      <ul className={`menuNav ${navbarOpen ? ' showMenu' : 'hideMenu'}`}>
         {links.map((link) => (
           <li key={link.id}>
             <NavLink

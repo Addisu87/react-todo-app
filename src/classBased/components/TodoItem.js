@@ -47,6 +47,8 @@ class TodoItem extends React.Component {
     // destructuring
     const { completed, id, title } = this.props.todo;
 
+    const { handleChangeProps, deleteTodoProps, setUpdate } = this.props;
+
     return (
       <li className={styles.item}>
         <div onDoubleClick={this.handleEditing} style={viewMode}>
@@ -54,9 +56,11 @@ class TodoItem extends React.Component {
             type="checkbox"
             className={styles.checkbox}
             checked={completed}
-            onChange={() => this.props.handleChangeProps(id)}
+            onChange={() => handleChangeProps(id)}
           />
-          <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
+          <button type="button" onClick={() => deleteTodoProps(id)}>
+            Delete
+          </button>
           <span style={completed ? completedStyle : null}>{title}</span>
         </div>
 
@@ -67,7 +71,7 @@ class TodoItem extends React.Component {
           className={styles.textInput}
           value={title}
           onChange={(e) => {
-            this.props.setUpdate(e.target.value, id);
+            setUpdate(e.target.value, id);
           }}
           onKeyDown={this.handleUpdatedDone}
         />

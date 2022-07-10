@@ -56,6 +56,11 @@ class TodoContainer extends React.Component {
   // lifecycle methods
 
   componentDidMount() {
+    // This is the simplest use of the fetch() method.
+    // fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
+    //   .then((response) => response.json())
+    //   .then((data) => this.setState({ todos: data }));
+
     const temp = localStorage.getItem('todos');
     const loadedTodos = JSON.parse(temp);
     if (loadedTodos) {

@@ -13,7 +13,7 @@ const InputTodo = (props) => {
     });
   };
 
-  const { addTodoProps, id } = props;
+  const { addTodoProps } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,11 +37,7 @@ const InputTodo = (props) => {
         name="title"
         onChange={onChange}
       />
-      <button
-        type="button"
-        className="input-submit"
-        onClick={() => addTodoProps(id)}
-      >
+      <button type="submit" className="input-submit">
         <FaPlusCircle
           style={{ color: 'darkcyan', fontSize: '20px', marginTop: '2px' }}
         />

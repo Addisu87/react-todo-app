@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, matchPath, Route } from 'react-router-dom';
-import SinglePage from './SinglePage';
+import { Link, matchPath } from 'react-router-dom';
 
-const About = () => {
-  const { url, path } = matchPath();
+function About() {
+  const { url } = matchPath;
+
   return (
     <div className="about__content">
       <ul className="about__list">
@@ -14,11 +14,8 @@ const About = () => {
           <Link to={`${url}/about-author`}>About Author</Link>
         </li>
       </ul>
-      <Route path={`${path}/:slug`}>
-        <SinglePage />
-      </Route>
     </div>
   );
-};
+}
 
 export default About;
