@@ -140,6 +140,7 @@ a {
   list-style: none;
   flex: 2;
   margin-right: 15px;
+  width: 100%;
 }
 
 .about__list a {
