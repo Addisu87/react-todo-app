@@ -6,7 +6,7 @@ import { FiMenu } from 'react-icons/fi';
 const Navbar = () => {
   const links = [
     { id: 1, path: '/', text: 'Home' },
-    { id: 2, path: '/about', text: 'About' },
+    { id: 2, path: '/about', text: 'About' }
   ];
 
   // hamburger menu (menu button)
@@ -35,7 +35,7 @@ const Navbar = () => {
           <li key={link.id}>
             <NavLink
               to={link.path}
-              // activeclassname="active-link"
+              activeClassname="active-link"
               onClick={() => closeMenu()}
               exact
             >

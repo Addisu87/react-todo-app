@@ -26,7 +26,7 @@ const TodoContainer = () => {
         if (todo.id === id) {
           return {
             ...todo,
-            completed: !todo.completed,
+            completed: !todo.completed
           };
         }
         return todo;
@@ -44,7 +44,7 @@ const TodoContainer = () => {
     const newTodo = {
       id: uuidv4(),
       title,
-      completed: false,
+      completed: false
     };
     setTodos([...todos, newTodo]);
   };
@@ -57,7 +57,7 @@ const TodoContainer = () => {
           todo.title = updatedTitle;
         }
         return todo;
-      }),
+      })
     );
   };
 
