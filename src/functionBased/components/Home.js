@@ -1,15 +1,11 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import InputTodo from './InputTodo';
 import TodosList from './TodosList';
-import About from '../pages/About';
-import NotMatch from '../pages/NotMatch';
-import Navbar from './Navbar';
 
-const TodoContainer = () => {
+const Home = () => {
   function getInitialTodos() {
     // getting stored items
     const temp = localStorage.getItem('todos');
@@ -19,6 +15,13 @@ const TodoContainer = () => {
 
   const [todos, setTodos] = useState(getInitialTodos());
 
+  // side effects(lifecycle methods using function)
+  useEffect(() => {
+    // storing todos items
+    const temp = JSON.stringify(todos);
+    localStorage.setItem('todos', temp);
+  }, [todos]);
+
   // update state
   const handleChange = (id) => {
     setTodos((prevState) => {
@@ -26,7 +29,7 @@ const TodoContainer = () => {
         if (todo.id === id) {
           return {
             ...todo,
-            completed: !todo.completed
+            completed: !todo.completed,
           };
         }
         return todo;
@@ -44,7 +47,7 @@ const TodoContainer = () => {
     const newTodo = {
       id: uuidv4(),
       title,
-      completed: false
+      completed: false,
     };
     setTodos([...todos, newTodo]);
   };
@@ -57,44 +60,24 @@ const TodoContainer = () => {
           todo.title = updatedTitle;
         }
         return todo;
-      })
+      }),
     );
   };
 
-  // side effects(lifecycle methods using function)
-  useEffect(() => {
-    // storing todos items
-    const temp = JSON.stringify(todos);
-    localStorage.setItem('todos', temp);
-  }, [todos]);
-
   return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route exact="true" path="/">
-          <div className="container">
-            <div className="inner">
-              <Header />
-              <InputTodo addTodoProps={addTodoItem} />
-              <TodosList
-                todos={todos}
-                handleChangeProps={handleChange}
-                deleteTodoProps={delTodo}
-                setUpdate={setUpdate}
-              />
-            </div>
-          </div>
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="*">
-          <NotMatch />
-        </Route>
-      </Routes>
-    </>
+    <div className="container">
+      <div className="inner">
+        <Header />
+        <InputTodo addTodoProps={addTodoItem} />
+        <TodosList
+          todos={todos}
+          handleChangeProps={handleChange}
+          deleteTodoProps={delTodo}
+          setUpdate={setUpdate}
+        />
+      </div>
+    </div>
   );
 };
 
-export default TodoContainer;
+export default Home;
