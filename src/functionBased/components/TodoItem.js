@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import styles from './TodoItem.module.css';
 
-const TodoItem = (props) => {
+const TodoItem = ({
+  todo, handleChangeProps, deleteTodoProps, setUpdate,
+}) => {
   const [editing, setEditing] = useState(false);
 
   const handleEditing = () => {
@@ -33,39 +35,38 @@ const TodoItem = (props) => {
     editMode.display = 'none';
   }
 
-  // destructuring
-  const { completed, id, title } = props.todo;
-
-  const { handleChangeProps, deleteTodoProps, setUpdate } = props;
-
   return (
-    <li className={styles.item}>
-      <div onDoubleClick={handleEditing} style={viewMode}>
+    <>
+      <li className={styles.item}>
+        <div onDoubleClick={handleEditing} style={viewMode}>
+          <input
+            type="checkbox"
+            className={styles.checkbox}
+            checked={todo.completed}
+            onChange={() => handleChangeProps(todo.id)}
+          />
+          <button type="button" onClick={() => deleteTodoProps(todo.id)}>
+            <FaTrash style={{ color: 'orangered', fontSize: '16px' }} />
+          </button>
+
+          <span style={todo.completed ? completedStyle : null}>
+            {todo.title}
+          </span>
+        </div>
+
+        {/* Editing todo items */}
         <input
-          type="checkbox"
-          className={styles.checkbox}
-          checked={completed}
-          onChange={() => handleChangeProps(id)}
+          type="text"
+          style={editMode}
+          className={styles.textInput}
+          value={todo.title}
+          onChange={(e) => {
+            setUpdate(e.target.value, todo.id);
+          }}
+          onKeyDown={handleUpdatedDone}
         />
-        <button type="button" onClick={() => deleteTodoProps(id)}>
-          <FaTrash style={{ color: 'orangered', fontSize: '16px' }} />
-        </button>
-
-        <span style={completed ? completedStyle : null}>{title}</span>
-      </div>
-
-      {/* Editing todo items */}
-      <input
-        type="text"
-        style={editMode}
-        className={styles.textInput}
-        value={title}
-        onChange={(e) => {
-          setUpdate(e.target.value, id);
-        }}
-        onKeyDown={handleUpdatedDone}
-      />
-    </li>
+      </li>
+    </>
   );
 };
 
