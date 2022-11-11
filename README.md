@@ -8,7 +8,7 @@
 
 ## Live Demo (if available)
 
-[Live Demo Link](http://localhost:3000/)
+[Live Demo Link](https://react-todo-app-addisu87.vercel.app/)
 
 ## Getting Started
 
